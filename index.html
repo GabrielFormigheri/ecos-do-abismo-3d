@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0f1e">
+<title>Ecos do Abismo 3D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!-- Three.js 0.169.0 vem junto do jogo (vendor/), sem depender de CDN. -->
+<script type="importmap">
+{ "imports": {
+  "three": "./vendor/three/build/three.module.js",
+  "three/addons/": "./vendor/three/examples/jsm/"
+} }
+</script>
+<script>
+  // Se algo falhar ao iniciar, mostra o erro na tela de carregamento em vez de travar em silêncio.
+  const showBootError = msg => { const el = document.getElementById('loading'); if (el) { el.style.cssText += ';padding:24px;text-align:center;font-size:16px;color:#ff8a96'; el.textContent = 'Erro ao iniciar: ' + msg; } };
+  addEventListener('error', e => showBootError(e.message || (e.target && e.target.src) || 'arquivo não carregou'), true);
+  addEventListener('unhandledrejection', e => showBootError(String(e.reason && e.reason.message || e.reason)));
+</script>
+</head>
+<body data-mode="hub">
+<div id="app"></div>
+<div id="loading">Carregando o abismo…</div>
+
+<!-- Hub -->
+<header id="hubbar" class="only-hub">
+  <div class="hb-who"><span class="hb-lvl" id="hb-lvl">1</span><div><b id="hb-class">Guerreiro</b><div class="xpbar"><i id="hb-xp"></i></div></div></div>
+  <div class="hb-stat"><small>Poder</small><b id="hb-power">0</b></div>
+  <div class="hb-stat gems"><small>Gemas</small><b>◆ <span id="hb-gems">0</span></b></div>
+  <button class="iconbtn" id="book-btn" data-act="open" data-arg="livro" aria-label="Livro do Aventureiro">📖</button>
+  <button class="iconbtn" id="cal-btn" data-act="open" data-arg="calendario" aria-label="Calendário">📅<i id="cal-dot" class="dot" hidden></i></button>
+  <button class="iconbtn" data-act="open" data-arg="ajustes" aria-label="Ajustes">⚙</button>
+</header>
+<nav id="hubnav" class="only-hub">
+  <button class="navbtn" data-act="open" data-arg="mochila">Mochila</button>
+  <button class="navbtn" data-act="open" data-arg="classe">Classe</button>
+  <button class="navbtn" data-act="open" data-arg="skins">Skins</button>
+  <button class="navbtn" data-act="open" data-arg="missoes">Missões<i id="mission-dot" hidden></i></button>
+  <button class="navbtn play" data-act="open" data-arg="dungeons">Jogar</button>
+</nav>
+<div id="quest-track" hidden></div>
+<div id="qarrow" hidden></div>
+<button id="prompt" class="only-play" data-act="prompt" hidden><kbd>F</kbd><span id="prompt-text"></span></button>
+
+<!-- Dungeon -->
+<div id="hud" class="only-dungeon">
+  <div id="hud-top">
+    <div id="hud-time">7:00</div>
+    <div id="hud-room">Sala 1/5</div>
+    <button class="iconbtn" data-act="pause" aria-label="Pausar">❚❚</button>
+  </div>
+  <div id="hud-obj" hidden></div>
+  <div id="hud-boss" hidden><div id="hud-boss-name"></div><div class="bar"><i id="hud-boss-fill"></i></div></div>
+  <div id="hud-hpwrap"><div class="bar hp"><i id="hud-hp"></i></div><span id="hud-hp-text"></span></div>
+</div>
+
+<!-- Controles (hub e dungeon) -->
+<div id="controls" class="only-play">
+  <div id="joy-zone" class="touch-only"></div>
+  <div id="joy"><div id="joy-knob"></div></div>
+  <button id="btn-dash" class="ctl dash" aria-label="Esquivar"><span>Esquiva</span><kbd>Shift</kbd></button>
+  <button id="sk0" class="ctl skill s0" aria-label="Habilidade 1"><span class="cd"></span><small class="nm"></small><kbd>Q</kbd></button>
+  <button id="sk1" class="ctl skill s1" aria-label="Habilidade 2"><span class="cd"></span><small class="nm"></small><kbd>E</kbd></button>
+  <button id="sk2" class="ctl skill s2" aria-label="Habilidade 3"><span class="cd"></span><small class="nm"></small><kbd>R</kbd></button>
+  <button id="btn-attack" class="ctl attack touch-only" aria-label="Atacar">Atacar</button>
+  <button id="btn-potion" class="ctl potion empty" aria-label="Beber poção"><i class="flask"></i><span class="cd"></span><b class="pn"></b><span class="pl"></span><kbd>1</kbd></button>
+</div>
+
+<div id="nameplate" class="only-play"><span class="np-vip">♛ VIP</span><span class="np-name"></span><span class="np-title"></span></div>
+<aside id="yardpanel"><small>Área de treino</small><div class="yd-dps"><b id="yd-dps">0</b> DPS</div>
+  <dl><dt>Dano 10s</dt><dd id="yd-total">0</dd><dt>Maior golpe</dt><dd id="yd-max">0</dd><dt>Crítico</dt><dd id="yd-crit">0%</dd></dl></aside>
+<div id="potbuffs" class="only-play"></div>
+<div id="gather-ring" hidden></div>
+<div id="nums"></div>
+<div id="combo" class="only-dungeon" hidden></div>
+<div id="hurt"></div>
+<div id="toasts"></div>
+<div id="tipcard" role="status" hidden><div><b id="tip-title"></b><p id="tip-text"></p></div><button class="btn primary" data-act="tipok">Entendi</button></div>
+<div id="banner"><small id="banner-top"></small><strong id="banner-title"></strong></div>
+
+<!-- Painel lateral (desktop) / folha inferior (celular) -->
+<section id="panel" hidden>
+  <div class="panel-head"><h2 id="panel-title"></h2><button class="iconbtn" data-act="close" aria-label="Fechar">✕</button></div>
+  <div id="panel-body"></div>
+</section>
+
+<div id="vault" hidden>
+  <div id="vault-flash"></div>
+  <div id="vault-hint"></div>
+  <div id="vault-card" hidden></div>
+  <div id="vault-sum"></div>
+</div>
+
+<div id="pause" class="modal" hidden>
+  <div class="modal-card">
+    <h2>Pausado</h2>
+    <button class="btn primary" data-act="resume">Continuar</button>
+    <button class="btn ghost" data-act="sound" id="pause-sound">Som</button>
+    <button class="btn danger" data-act="quit">Sair da dungeon</button>
+  </div>
+</div>
+
+<div id="results" class="modal" hidden>
+  <div class="modal-card">
+    <h2 id="res-title"></h2>
+    <p id="res-reason"></p>
+    <div id="res-stats"></div>
+    <h4>Itens obtidos</h4>
+    <div id="res-items"></div>
+    <div class="row2">
+      <button class="btn ghost" data-act="hub">Voltar ao hub</button>
+      <button class="btn primary" data-act="again">Jogar de novo</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+Áudio do Ecos do Abismo 3D (fontes CC0 / domínio público e síntese original V2)
+
+Efeitos (sfx/): "50 RPG sound effects" de Kenney (www.kenney.nl), CC0
+  https://opengameart.org/content/50-rpg-sound-effects
+Efeitos novos (sfx/*.m4a: mortes e golpes dos mobs, uma amostra por habilidade), todos CC0, cortados e convertidos:
+  rubberduck: "80 CC0 creature SFX" e "#2", "75 CC0 breaking/falling/hit sfx", "100 CC0 SFX" e "#2",
+  "100 CC0 metal and wood SFX", "40 CC0 water/splash/slime SFX"
+    https://opengameart.org/content/80-cc0-creature-sfx
+    https://opengameart.org/content/80-cc0-creture-sfx-2
+    https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx
+    https://opengameart.org/content/100-cc0-sfx
+    https://opengameart.org/content/100-cc0-sfx-2
+    https://opengameart.org/content/100-cc0-metal-and-wood-sfx
+    https://opengameart.org/content/40-cc0-water-splash-slime-sfx
+  "Magic Spell SFX" de JaggedStone (sk_orbe, ghostFade)
+    https://opengameart.org/content/magic-spell-sfx
+  "Ice spells" de bart (sk_nova)   https://opengameart.org/content/ice-spells
+  "Synthesized fire sound effect" (sk_fenix, sk_meteoro; chuva de meteoros)   https://opengameart.org/content/synthesized-fire-sound-effect
+Coleta e alquimia (sfx/mine1, mine2, mineBreak, reapDone, bubble1-3, glass1-2 .m4a), rubberduck, CC0:
+  "75 CC0 breaking/falling/hit sfx" (mine1, mineBreak), "100 CC0 metal and wood SFX" (mine2),
+  "100 CC0 SFX" (reapDone, glass1-2), "40 CC0 water/splash/slime SFX" (bubble1-3)
+Música do hub (music/hub.mp3): "Town Theme RPG", CC0
+  https://opengameart.org/content/town-theme-rpg
+Músicas extras do hub (music/hub2–hub5.m4a): "JRPG Music Pack #2 [Towns]" de Juhani Junkala, CC0
+  https://opengameart.org/content/jrpg-pack-2-towns
+Música extra do hub (music/hub6.m4a): "Village, 2018" de Komiku, CC0
+  https://opengameart.org/content/village-2018
+Música da dungeon (music/dungeon.mp3): "Heavy Dungeon" de MintoDog, CC0
+  https://opengameart.org/node/181405
+Música do chefe (music/boss.mp3): "Hard Boss Battle 2" de MintoDog, CC0
+  https://opengameart.org/content/hard-boss-battle-2
+
+Originais completos ficam em raw/ (não usados pelo jogo; podem ser apagados).
+
+Prévia V2 aprovada (sfx/v2-*.wav), integrada em 2026-10-30:
+  v2-espada, v2-arco-cacador, v2-arco-sombrio, v2-fogo, v2-raio:
+    síntese original gerada para Ecos do Abismo, sem samples externos.
+  v2-slime, v2-esqueleto, v2-golem:
+    síntese original + recortes de amostras locais de rubberduck, CC0 segundo
+    o manifesto original acima. Slime: bubble2/slime2/hitSlime2;
+    esqueleto: bones2/hitBone2; golem: golemGrunt/hitRock2/rock2.
+    As coleções de água/slime, criaturas e impactos de rubberduck estão listadas
+    acima. O manifesto local não registra o mapeamento dos nomes M4A para cada
+    arquivo original de download; essa atribuição específica não foi refeita.
+  Os WAVs são os mesmos da prévia audio-preview-v2 aprovada, PCM 16 bits/44,1 kHz.
+  A sequência de demonstração não é usada no jogo.
+
+Corte de espada rasgante aprovado em 2026-10-31 (sfx/v4-espada-rasgante-1 a 4.wav):
+  "Swishes Sound Pack", artisticdude, CC0.
+  https://opengameart.org/content/swishes-sound-pack
+  Fontes: swish-10.wav, swish-11.wav, swish-12.wav, swish-13.wav, respectivamente.
+  Edições: conversão de estéreo para mono, remoção de DC, filtragem, fades e ganho.
+  Substitui v2-espada no ataque; quatro gravações sem repetição consecutiva.
