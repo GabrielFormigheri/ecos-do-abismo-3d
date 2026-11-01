@@ -1,0 +1,59 @@
+[
+  {
+    "file": "monastery_stone_floor-color.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/monastery_stone_floor/monastery_stone_floor_diff_1k.jpg",
+    "license": "CC0",
+    "size": 766525
+  },
+  {
+    "file": "monastery_stone_floor-normal.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/monastery_stone_floor/monastery_stone_floor_nor_gl_1k.jpg",
+    "license": "CC0",
+    "size": 1063115
+  },
+  {
+    "file": "monastery_stone_floor-arm.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/monastery_stone_floor/monastery_stone_floor_arm_1k.jpg",
+    "license": "CC0",
+    "size": 645382
+  },
+  {
+    "file": "mossy_rock-color.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/mossy_rock/mossy_rock_diff_1k.jpg",
+    "license": "CC0",
+    "size": 1124438
+  },
+  {
+    "file": "mossy_rock-normal.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/mossy_rock/mossy_rock_nor_gl_1k.jpg",
+    "license": "CC0",
+    "size": 995727
+  },
+  {
+    "file": "mossy_rock-arm.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/mossy_rock/mossy_rock_arm_1k.jpg",
+    "license": "CC0",
+    "size": 926941
+  },
+  {
+    "file": "grass_ground-color.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/grass_ground/grass_ground_diff_1k.jpg",
+    "license": "CC0",
+    "download_bytes": 876584,
+    "optimized_bytes": 91344
+  },
+  {
+    "file": "grass_ground-normal.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/grass_ground/grass_ground_nor_gl_1k.jpg",
+    "license": "CC0",
+    "download_bytes": 1310516,
+    "optimized_bytes": 120930
+  },
+  {
+    "file": "grass_ground-arm.jpg",
+    "source": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/grass_ground/grass_ground_arm_1k.jpg",
+    "license": "CC0",
+    "download_bytes": 896135,
+    "optimized_bytes": 73668
+  }
+]
